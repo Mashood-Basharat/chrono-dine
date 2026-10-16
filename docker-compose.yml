@@ -3,18 +3,18 @@ version: '3.8'
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: tablepulse_postgres
+    container_name: chronodine_postgres
     restart: always
     environment:
-      POSTGRES_USER: tablepulse_admin
-      POSTGRES_PASSWORD: tablepulse_secure_password
-      POSTGRES_DB: tablepulse_db
+      POSTGRES_USER: chronodine_admin
+      POSTGRES_PASSWORD: chronodine_secure_password
+      POSTGRES_DB: chronodine_db
     ports:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U tablepulse_admin -d tablepulse_db"]
+      test: ["CMD-SHELL", "pg_isready -U chronodine_admin -d chronodine_db"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -23,7 +23,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: tablepulse_app
+    container_name: chronodine_app
     restart: always
     depends_on:
       postgres:
@@ -31,7 +31,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgresql://tablepulse_admin:tablepulse_secure_password@postgres:5432/tablepulse_db
+      - DATABASE_URL=postgresql://chronodine_admin:chronodine_secure_password@postgres:5432/chronodine_db
       - STREAM_SOURCE=videos/Cctv Resturant.mp4
       - CONFIDENCE_THRESHOLD=0.25
       - POSE_CONFIDENCE_THRESHOLD=0.30

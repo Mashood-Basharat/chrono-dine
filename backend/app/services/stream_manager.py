@@ -28,6 +28,7 @@ class StreamManager:
         self.width: int = 1280
         self.height: int = 720
         self.is_connected: bool = False
+        self.pending_source: Optional[str] = None
 
     def start(self, source_url: Optional[str] = None):
         if source_url:
@@ -46,15 +47,17 @@ class StreamManager:
         if self.worker_thread and self.worker_thread.is_alive():
             self.worker_thread.join(timeout=2.0)
         if self.cap:
-            self.cap.release()
+            try:
+                self.cap.release()
+            except Exception:
+                pass
             self.cap = None
         self.is_connected = False
         logger.info("Stream ingestion stopped.")
 
     def update_source(self, new_source: str):
-        logger.info(f"Switching video stream source to: {new_source}")
-        self.source_url = new_source
-        self.start(new_source)
+        logger.info(f"Queuing video stream source switch to: {new_source}")
+        self.pending_source = new_source
 
     def get_latest_frame(self) -> Tuple[int, Optional[np.ndarray], Optional[bytes]]:
         with self._frame_lock:
@@ -89,6 +92,19 @@ class StreamManager:
         reconnect_delay = 2.0
 
         while self.is_running:
+            if self.pending_source is not None:
+                new_src = self.pending_source
+                self.pending_source = None
+                logger.info(f"Applying pending video source switch to: {new_src}")
+                if self.cap is not None:
+                    try:
+                        self.cap.release()
+                    except Exception:
+                        pass
+                    self.cap = None
+                self.source_url = new_src
+                self.is_connected = False
+
             if self.cap is None or not self.cap.isOpened():
                 if not self._open_capture():
                     time.sleep(reconnect_delay)
@@ -121,7 +137,8 @@ class StreamManager:
 
             # Respect target FPS pace when playing from file
             if not (isinstance(self.source_url, str) and self.source_url.lower().startswith("rtsp")):
-                time.sleep(1.0 / max(10, self.fps))
+                target_pace = settings.STREAM_FPS_TARGET if settings.STREAM_FPS_TARGET > 0 else self.fps
+                time.sleep(1.0 / max(10.0, float(target_pace)))
 
 
 stream_manager = StreamManager()

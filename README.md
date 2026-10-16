@@ -154,6 +154,7 @@ ChronoDine/
 |-- .gitignore                      # Version control exclusion rules
 |-- docker-compose.yml              # PostgreSQL and backend container definition
 |-- Dockerfile                      # Production container build specification
+|-- LICENSE                         # MIT open source license
 |-- run.bat                         # Windows execution script
 |-- tables.json                     # Default table zone coordinates
 `-- table_tops.json                 # Default tabletop coordinates
@@ -173,7 +174,7 @@ ChronoDine/
 1. **Clone the repository:**
    ```bash
    git clone <repository-url>
-   cd "D:/Resturant Analysis App"
+   cd ChronoDine
    ```
 
 2. **Create and activate a virtual environment:**
@@ -195,9 +196,11 @@ ChronoDine/
    ```
 
 4. **Verify model weights:**
-   Ensure the following weight files exist in the `models/` directory (these are downloaded automatically on first start if absent):
+   Ensure the following pre-trained weight files are present in the `models/` directory:
    * `models/yolo11s.pt`
    * `models/yolo11s-pose.pt`
+
+   *(Note: Model weights and sample video recordings are excluded from git tracking to maintain a compact repository).*
 
 5. **Run the application:**
    * Using the Windows launcher:
@@ -233,8 +236,8 @@ To run the full stack with dedicated PostgreSQL containerization:
    ```
 
 3. **Service Details:**
-   * **PostgreSQL:** Port 5432, persistent volume mounted to `pgdata`
-   * **ChronoDine Web Service:** Port 8000 with healthcheck dependencies
+   * **PostgreSQL (`chronodine_postgres`):** Port 5432, persistent volume mounted to `pgdata`
+   * **ChronoDine Web Service (`chronodine_app`):** Port 8000 with healthcheck dependencies
 
 4. **Shutdown containers:**
    ```bash
@@ -253,7 +256,7 @@ Configuration parameters can be defined via environment variables or inside a `.
 | `DB_POOL_SIZE` | Integer | `10` | Base database connection pool size. |
 | `DB_MAX_OVERFLOW` | Integer | `20` | Maximum overflow connections allowed in pool. |
 | `STREAM_SOURCE` | String | `videos/Cctv Resturant.mp4` | RTSP URI (`rtsp://...`), local video path, or webcam index (`0`). |
-| `STREAM_FPS_TARGET` | Integer | `25` | Target processing frame rate. |
+| `STREAM_FPS_TARGET` | Integer | `25` | Target playback pace for file-based streams. |
 | `JPEG_QUALITY` | Integer | `80` | Compression quality for streamed JPEG frames (1-100). |
 | `YOLO_MODEL_PATH` | String | `models/yolo11s.pt` | Path to detection weights file. |
 | `YOLO_POSE_MODEL_PATH` | String | `models/yolo11s-pose.pt` | Path to pose estimation weights file. |
@@ -261,6 +264,7 @@ Configuration parameters can be defined via environment variables or inside a `.
 | `POSE_CONFIDENCE_THRESHOLD` | Float | `0.30` | Keypoint estimation minimum confidence (0.05 - 0.95). |
 | `OCCUPY_HYSTERESIS_SECONDS` | Float | `1.0` | Required continuous occupancy before triggering state change. |
 | `FREE_HYSTERESIS_SECONDS` | Float | `1.5` | Required continuous emptiness before table registers as free. |
+| `DEFAULT_SEATS_PER_TABLE` | Integer | `4` | Default seat capacity assigned to newly created tables. |
 | `ALERT_IDLE_TABLE_MINUTES` | Integer | `15` | Seated duration threshold for generating dwell alerts. |
 | `ALERT_CAPACITY_PERCENT` | Integer | `85` | Dining room utilization threshold for high-capacity warnings. |
 

@@ -26,8 +26,6 @@ class Settings(BaseSettings):
     POSE_CONFIDENCE_THRESHOLD: float = 0.30
     OCCUPY_HYSTERESIS_SECONDS: float = 1.0
     FREE_HYSTERESIS_SECONDS: float = 1.5
-    UP_COUNT_SECONDS: float = 2.0
-    DOWN_COUNT_SECONDS: float = 8.0
     DEFAULT_SEATS_PER_TABLE: int = 4
 
     # Operational Alerts

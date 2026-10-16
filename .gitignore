@@ -1,0 +1,65 @@
+# ===================================================
+# ChronoDine .gitignore
+# ===================================================
+
+# Python bytecode & caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+
+# Sensitive environment files (keep .env.example tracked)
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Local SQLite databases & PostgreSQL volume dumps
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+restaurant_app.db
+restaurant.db
+pgdata/
+
+# Large binary AI weights (downloaded on first run)
+models/*.pt
+*.pt
+*.onnx
+*.engine
+*.bin
+
+# Large video files & CCTV demo recordings
+videos/
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Runtime logs, frame exports & temporary artifacts
+*.log
+activity-log.csv
+snapshots/
+*.jpg
+*.jpeg
+*.png
+.setup-tmp/
+
+# IDE & Operating System artifacts
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini

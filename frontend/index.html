@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChronoDine | Enterprise Restaurant Intelligence Platform</title>
+  
+  <!-- Modern Typography from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+  <!-- ================= Top Navigation Bar ================= -->
+  <header class="navbar">
+    <div class="brand-section">
+      <a href="#floor" class="brand-logo" id="brand-logo-link">
+        <div class="brand-icon">
+          <!-- ChronoDine Custom Logo: Precision Chronometer + Dining Cloche -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Chrono: Stopwatch Top Pusher -->
+            <path d="M12 2v2M9.5 2h5" stroke-width="2.2"/>
+            <!-- Chronometer Outer Dial -->
+            <circle cx="12" cy="13.5" r="8.5" stroke-width="1.8"/>
+            <!-- Dine: Fine Dining Cloche Dome & Platter Base -->
+            <path d="M6.5 16.5h11" stroke-width="2"/>
+            <path d="M7.8 16.5a4.2 4.2 0 0 1 8.4 0" stroke-width="1.8"/>
+            <!-- Cloche Handle / Clock Hub -->
+            <circle cx="12" cy="11.5" r="1.2" fill="#ffffff"/>
+            <!-- Clock Index Hand (Time Measurement) -->
+            <path d="M12 6.5v3" stroke-width="2" stroke="#a5b4fc"/>
+          </svg>
+        </div>
+        <span>Chrono<span style="color: var(--accent-primary);">Dine</span> <small style="font-size: 0.6em; font-weight: 700; color: #818cf8; letter-spacing: 0.08em; text-transform: uppercase; margin-left: 4px; padding: 2px 6px; background: rgba(99, 102, 241, 0.15); border-radius: 4px; border: 1px solid rgba(99, 102, 241, 0.3);">AI</small></span>
+      </a>
+
+      <nav class="nav-links" id="main-nav">
+        <a href="#floor" class="nav-link active" data-tab="floor" id="nav-tab-floor">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Live Floor
+        </a>
+        <a href="#calibration" class="nav-link" data-tab="calibration" id="nav-tab-calibration">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          Calibration Studio
+        </a>
+        <a href="#waitlist" class="nav-link" data-tab="waitlist" id="nav-tab-waitlist">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Waitlist Hub
+        </a>
+        <a href="#analytics" class="nav-link" data-tab="analytics" id="nav-tab-analytics">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+          Analytics & Reports
+        </a>
+        <a href="#settings" class="nav-link" data-tab="settings" id="nav-tab-settings">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+          Settings
+        </a>
+      </nav>
+    </div>
+
+    <div class="header-actions">
+      <div class="status-pill emerald" id="connection-status-pill">
+        <span class="pulse-dot"></span>
+        <span id="connection-status-text">Live Stream</span>
+      </div>
+
+      <button class="alert-badge-btn" id="btn-alert-drawer" title="Operational Alerts" aria-label="Operational Alerts">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+        <span class="alert-counter" id="alert-badge-count" style="display: none;">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= Main Body Layout ================= -->
+  <main class="main-wrapper">
+
+    <!-- KPI Metric Bar -->
+    <section class="kpi-grid" aria-label="Real-time Operational KPIs">
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-title">Occupied Tables</span>
+          <div class="kpi-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-crimson)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div>
+        </div>
+        <div class="kpi-value-row">
+          <span class="kpi-value" id="kpi-occupied">–</span>
+          <span class="kpi-subtext" id="kpi-occupied-sub">of – tables</span>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-title">Guests Seated</span>
+          <div class="kpi-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+        </div>
+        <div class="kpi-value-row">
+          <span class="kpi-value" id="kpi-guests">–</span>
+          <span class="kpi-subtext" id="kpi-guests-sub">of – capacity</span>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-title">Seat Utilization</span>
+          <div class="kpi-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-emerald)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        </div>
+        <div class="kpi-value-row">
+          <span class="kpi-value" id="kpi-utilization" style="color: var(--accent-emerald);">–%</span>
+          <span class="kpi-subtext">Real-time load</span>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-title">Inference Engine</span>
+          <div class="kpi-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        </div>
+        <div class="kpi-value-row">
+          <span class="kpi-value" id="kpi-fps" style="color: var(--accent-cyan); font-size: 1.6rem;">– FPS</span>
+          <span class="kpi-subtext">YOLOv11 Dual Pose</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 1: Live Floor ================= -->
+    <section class="tab-pane active" id="tab-floor">
+      <div class="floor-layout">
+        <!-- Live Camera Stream -->
+        <div class="camera-card">
+          <div class="card-topbar">
+            <span class="card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2"/></svg>
+              Live Floor Camera Feed
+            </span>
+            <div style="display: flex; gap: 0.5rem;">
+              <a href="/api/live/snapshot" class="btn btn-secondary btn-sm" download title="Capture Frame">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                Snapshot
+              </a>
+            </div>
+          </div>
+          <div class="camera-viewport">
+            <img class="camera-stream" id="main-camera-stream" src="/api/live/stream" alt="Live Floor Stream">
+          </div>
+        </div>
+
+        <!-- Table Status Grid & Quick Actions -->
+        <div class="table-cards-container">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="font-size: 1.1rem; font-weight: 700;">Dining Tables</h3>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Real-Time State</span>
+          </div>
+          <div class="table-grid" id="table-cards-list">
+            <!-- Dynamic Table Cards injected by app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 2: Calibration Studio ================= -->
+    <section class="tab-pane" id="tab-calibration">
+      <div class="calibration-container">
+        <div>
+          <div class="canvas-viewport-wrap">
+            <img id="calib-video" src="/api/live/stream/raw" alt="Calibration Stream">
+            <canvas id="calib-canvas"></canvas>
+          </div>
+
+          <div class="calib-toolbar">
+            <button class="btn btn-primary" id="btn-draw-zone">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              Draw Zone (Polygon)
+            </button>
+            <button class="btn btn-secondary" id="btn-clear-active">Clear Current Points</button>
+            <button class="btn btn-secondary" id="btn-import-seed">Import Default Seed</button>
+          </div>
+          <div id="calib-instruction" style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--accent-amber); font-weight: 500;">
+            Click on the video stream to plot boundary points. Double-click to close polygon.
+          </div>
+        </div>
+
+        <!-- Calibration Sidebar Form -->
+        <div class="calib-sidebar">
+          <div style="border-bottom: 1px solid var(--border-subtle); padding-bottom: 1rem;">
+            <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">Save Table Zone</h3>
+            <div class="form-group" style="margin-bottom: 0.75rem;">
+              <label class="form-label" for="zone-name-input">Table Label</label>
+              <input type="text" class="form-input" id="zone-name-input" placeholder="e.g. Table 7">
+            </div>
+            <div class="form-group" style="margin-bottom: 1rem;">
+              <label class="form-label" for="zone-seats-input">Seat Capacity</label>
+              <input type="number" class="form-input" id="zone-seats-input" value="4" min="1" max="20">
+            </div>
+            <button class="btn btn-primary" id="btn-save-zone" style="width: 100%;">Save to AI Engine</button>
+          </div>
+
+          <div>
+            <h4 style="font-size: 0.9rem; font-weight: 600; margin-bottom: 0.75rem; text-transform: uppercase; color: var(--text-muted);">Calibrated Tables</h4>
+            <div id="calib-zones-list" style="max-height: 380px; overflow-y: auto;">
+              <!-- Dynamic zone items injected by calibrationStudio -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 3: Waitlist Hub ================= -->
+    <section class="tab-pane" id="tab-waitlist">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <div>
+          <h2 style="font-size: 1.5rem; font-weight: 700;">Hostess Waitlist & Seating Queue</h2>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Assign waiting parties to detected free tables in real-time.</p>
+        </div>
+        <button class="btn btn-primary" id="btn-add-party-modal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          New Party
+        </button>
+      </div>
+
+      <div class="waitlist-grid">
+        <div class="waitlist-column">
+          <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span class="pulse-dot" style="background-color: var(--accent-amber);"></span>
+            Waiting Parties
+          </h3>
+          <div id="waiting-parties-list">
+            <!-- Dynamic Waiting Parties -->
+          </div>
+        </div>
+
+        <div class="waitlist-column">
+          <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span class="pulse-dot" style="background-color: var(--accent-emerald);"></span>
+            Recently Seated Parties
+          </h3>
+          <div id="seated-parties-list">
+            <!-- Dynamic Seated Parties -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 4: Analytics & Reports ================= -->
+    <section class="tab-pane" id="tab-analytics">
+      <!-- Rolling Graph -->
+      <div class="camera-card" style="margin-bottom: 1.75rem;">
+        <div class="card-topbar">
+          <span class="card-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+            Occupancy & Seated Guest Velocity (Last 60 Minutes)
+          </span>
+          <a href="/api/analytics/export/csv" class="btn btn-secondary btn-sm" download>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download CSV Report
+          </a>
+        </div>
+        <div style="padding: 1.5rem; height: 320px;">
+          <canvas id="occupancy-chart" style="width: 100%; height: 100%;"></canvas>
+        </div>
+      </div>
+
+      <!-- Performance Summary Metrics -->
+      <div class="kpi-grid" style="margin-bottom: 1.75rem;">
+        <div class="kpi-card">
+          <div class="kpi-title">Total Concluded Visits</div>
+          <div class="kpi-value" id="ana-total-visits" style="margin-top: 0.5rem;">–</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">Average Dining Dwell Time</div>
+          <div class="kpi-value" id="ana-avg-duration" style="margin-top: 0.5rem;">–</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">Average Party Size</div>
+          <div class="kpi-value" id="ana-avg-guests" style="margin-top: 0.5rem;">–</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-title">Longest Dining Session</div>
+          <div class="kpi-value" id="ana-longest-visit" style="margin-top: 0.5rem;">–</div>
+        </div>
+      </div>
+
+      <!-- Per-Table Summary Table -->
+      <div class="data-table-container" style="margin-bottom: 1.75rem;">
+        <div class="table-header-bar">
+          <span style="font-weight: 700; font-size: 1.05rem;">Table Performance & Turnover</span>
+        </div>
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Table Name</th>
+              <th>Total Visits</th>
+              <th>Avg Dining Time</th>
+              <th>Avg Party Size</th>
+              <th>Longest Visit</th>
+            </tr>
+          </thead>
+          <tbody id="analytics-tables-body">
+            <!-- Dynamic table stats -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Recent Visits Log -->
+      <div class="data-table-container">
+        <div class="table-header-bar">
+          <span style="font-weight: 700; font-size: 1.05rem;">Recent Completed Visits (Activity Log)</span>
+        </div>
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Table</th>
+              <th>Seated At</th>
+              <th>Departed At</th>
+              <th>Duration</th>
+              <th>Guests</th>
+            </tr>
+          </thead>
+          <tbody id="analytics-visits-body">
+            <!-- Dynamic visits -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ================= TAB 5: Alerts & Events ================= -->
+    <section class="tab-pane" id="tab-alerts">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <div>
+          <h2 style="font-size: 1.5rem; font-weight: 700;">Operational Alerts & Notifications</h2>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Automated real-time triggers for long dwell times, high occupancy, and table turnover.</p>
+        </div>
+        <button class="btn btn-secondary" id="btn-dismiss-all-alerts">Dismiss All Alerts</button>
+      </div>
+
+      <div class="waitlist-column" style="max-width: 900px; margin: 0 auto;">
+        <div id="alerts-full-list">
+          <!-- Dynamic alerts -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 6: Settings ================= -->
+    <section class="tab-pane" id="tab-settings">
+      <div style="max-width: 800px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2rem;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">Platform & Stream Configuration</h2>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">Switch between RTSP IP cameras and local files, and adjust AI sensitivity.</p>
+
+        <!-- System Diagnostics Badge -->
+        <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; padding: 1rem; background: var(--bg-elevated); border-radius: var(--radius-md);">
+          <div><span style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase;">Database</span><div style="font-weight: 700;" id="cfg-db-type">SQLite (Pool)</div></div>
+          <div style="width: 1px; background: var(--border-subtle);"></div>
+          <div><span style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase;">Stream Resolution</span><div style="font-weight: 700;" id="cfg-resolution">1280x720</div></div>
+          <div style="width: 1px; background: var(--border-subtle);"></div>
+          <div><span style="color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase;">Connection State</span><div style="font-weight: 700; color: var(--accent-emerald);" id="cfg-status">Connected</div></div>
+        </div>
+
+        <form id="settings-form">
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" for="cfg-quick-video">Quick Select Local Recording</label>
+            <select class="form-select" id="cfg-quick-video" onchange="document.getElementById('cfg-source').value = this.value">
+              <!-- Videos -->
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1.25rem;">
+            <label class="form-label" for="cfg-source">Video Source URL or RTSP URI</label>
+            <input type="text" class="form-input" id="cfg-source" placeholder="rtsp://user:pass@192.168.1.50:554/stream1 or videos/recording.mp4">
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Supports standard IP cameras (RTSP/ONVIF), local files (.mp4), or webcam indices (0, 1).</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
+            <div class="form-group">
+              <label class="form-label" for="cfg-conf">Detection Confidence (0.05 – 0.95)</label>
+              <input type="number" step="0.05" class="form-input" id="cfg-conf">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cfg-pose-conf">Pose Standing Confidence (0.05 – 0.95)</label>
+              <input type="number" step="0.05" class="form-input" id="cfg-pose-conf">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.75rem;">
+            <div class="form-group">
+              <label class="form-label" for="cfg-idle-alert">Long Dwell Alert Threshold (Minutes)</label>
+              <input type="number" class="form-input" id="cfg-idle-alert" min="1" max="120">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cfg-cap-alert">High Capacity Alert Threshold (%)</label>
+              <input type="number" class="form-input" id="cfg-cap-alert" min="50" max="100">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Apply & Save Settings</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= Modal: Add Waitlist Party ================= -->
+  <div class="modal-overlay" id="modal-add-party">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 style="font-weight: 700; font-size: 1.1rem;">Add Party to Waitlist</h3>
+        <button class="btn btn-secondary btn-sm" id="btn-cancel-party">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label" for="party-name-input">Customer Name *</label>
+          <input type="text" class="form-input" id="party-name-input" placeholder="e.g. John Doe">
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+          <div class="form-group">
+            <label class="form-label" for="party-size-input">Party Size</label>
+            <input type="number" class="form-input" id="party-size-input" value="2" min="1" max="25">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="party-quote-input">Quoted Wait (Mins)</label>
+            <input type="number" class="form-input" id="party-quote-input" value="15" min="1" max="120">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="party-phone-input">Phone Number (Optional)</label>
+          <input type="tel" class="form-input" id="party-phone-input" placeholder="+1 (555) 000-0000">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="party-notes-input">Notes / Seating Preferences</label>
+          <input type="text" class="form-input" id="party-notes-input" placeholder="e.g. Booth preferred, Birthday">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="btn-submit-party">Add to Queue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= Modal: Seat Party ================= -->
+  <div class="modal-overlay" id="modal-seat-party">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 style="font-weight: 700; font-size: 1.1rem;">Seat Party at Table</h3>
+        <button class="btn btn-secondary btn-sm" id="btn-cancel-seat">×</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.9rem; color: var(--text-secondary);">Select the dining table to assign this party to:</p>
+        <div class="form-group">
+          <label class="form-label" for="seat-table-select">Select Table</label>
+          <select class="form-select" id="seat-table-select">
+            <!-- Dynamic table options -->
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="btn-confirm-seat">Confirm Seating</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Core Scripts -->
+  <script src="/static/js/websocket.js"></script>
+  <script src="/static/js/canvas_calibration.js"></script>
+  <script src="/static/js/waitlist.js"></script>
+  <script src="/static/js/charts.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

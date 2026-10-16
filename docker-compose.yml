@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: tablepulse_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: tablepulse_admin
+      POSTGRES_PASSWORD: tablepulse_secure_password
+      POSTGRES_DB: tablepulse_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tablepulse_admin -d tablepulse_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tablepulse_app
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://tablepulse_admin:tablepulse_secure_password@postgres:5432/tablepulse_db
+      - STREAM_SOURCE=videos/Cctv Resturant.mp4
+      - CONFIDENCE_THRESHOLD=0.25
+      - POSE_CONFIDENCE_THRESHOLD=0.30
+    volumes:
+      - ./models:/app/models
+      - ./videos:/app/videos
+
+volumes:
+  pgdata:
